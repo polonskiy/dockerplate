@@ -16,6 +16,7 @@ fi
 
 echo "[$app] starting..."
 docker run \
+    -t \
     -d \
     --restart unless-stopped \
     --name $app \
