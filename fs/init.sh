@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#rsyslogd
+#cron
+#service apache2 start
+
+on_sigint() {
+    #service apache2 stop
+    exit
+}
+
+on_sigterm() {
+    #service apache2 stop
+    exit
+}
+
+on_sighup() {
+    #service apache2 reload
+    true
+}
+
+on_sigusr1() {
+    true
+}
+
+trap on_sigint INT
+trap on_sigterm TERM
+trap on_sighup HUP
+trap on_sigusr1 USR1
+
+while true; do
+    sleep 1000 &
+    wait
+done
