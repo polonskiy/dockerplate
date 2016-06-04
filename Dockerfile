@@ -5,4 +5,4 @@ run apt-get update && apt-get install -y \
     wget
 
 add fs /
-cmd ["/init.sh"]
+cmd ["/init"]
