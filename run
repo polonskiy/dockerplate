@@ -9,6 +9,8 @@ docker build -t $app . > /dev/null
 
 docker volume create --name=$app > /dev/null
 
+#iptables -I INPUT -p tcp --dport $PORT --syn -j DROP
+#sleep 1
 if docker inspect --type=container $app > /dev/null 2>&1; then
     echo "[$app] removing old version..."
     docker rm -f $app > /dev/null
@@ -23,3 +25,4 @@ docker run \
     $app > /dev/null
 
 echo "[$app] done"
+#iptables -D INPUT -p tcp --dport $PORT --syn -j DROP
